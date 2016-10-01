@@ -73,4 +73,6 @@ $catcount="select COUNT(DISTINCT(ID)) as CT from medsheet where type = 'C'  and 
 $isocount="select COUNT(DISTINCT(ID)) as CT from medsheet where type = 'C'  and ISO ='y' and " . $today . " ";
 
 
+
+
 ?>
