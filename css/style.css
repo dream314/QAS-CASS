@@ -1,0 +1,45 @@
+#@import url('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css');
+
+
+body	{
+	margin: 10px	
+}
+.date-form { margin: 10px; }
+label.control-label span { cursor: pointer; }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+      border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+      }
+      .navbar {  
+      border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;}
+    	
+    	th {
+    	  border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    }
+    navbar-fixed-top	{
+    	background-color:blue;
+    	}
+    	
+    	
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto; line-height: 1.8;
+    ;
+     
+
+    }
