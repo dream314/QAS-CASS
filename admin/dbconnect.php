@@ -1,6 +1,6 @@
 <?php
 
-$con=mysqli_connect("localhost","root","W3rth3B0rg!","med_base");
+$con=mysqli_connect("localhost","QAS-CASS","QAS-CASS!","med_base");
 
 if (mysqli_connect_errno($con))
   {
