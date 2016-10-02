@@ -2,37 +2,12 @@
 
 date_default_timezone_set('America/New_York');
 
-//Overview query
-
-$ovrsql= "SELECT * FROM medsheet where ";
-
-$indsql= "SELECT * FROM medsheet ";
-
-//Name List
-
-$namesql = "SELECT DISTINCT anmlid, anml_name from TBL_ANIMALS where anmlid !=0 order by anml_name ";
-
-//Volunteers List
-
-$volsql = "SELECT DISTINCT volid, lastname, firstname from TBL_VOLUNTEERS where volid !=0 order by lastname";
-
-
-//Meds List
-
-$medsql = "SELECT DISTINCT MEDID, MEDNAME from MEDSTABLE order by MEDNAME";
-
-//Dose Confirm
-$dosecsql = "SELECT Name, Dose, Medication, Date, TOD FROM medsheet";
-
-
 //Dates and things
 
 $orderby= " order by Name, Date, TOD ";
 
 $dtest= date("Y-m-d");
 $dtest01= date("d M y");
-
-
 
 
 $date=date_create("$dtest");
@@ -56,6 +31,29 @@ $month="Date BETWEEN \"" . $dtest . "\" AND \"" . $mtest . "\"";
 
 
 
+//Overview query
+
+$ovrsql= "SELECT * FROM medsheet where ";
+
+$indsql= "SELECT * FROM medsheet ";
+
+//Name List
+
+$namesql = "SELECT DISTINCT anmlid, anml_name from TBL_ANIMALS where anmlid !=0 order by anml_name ";
+
+//Volunteers List
+
+$volsql = "SELECT DISTINCT volid, lastname, firstname from TBL_VOLUNTEERS where volid !=0 order by lastname";
+
+
+//Meds List
+
+$medsql = "SELECT DISTINCT MEDID, MEDNAME from MEDSTABLE order by MEDNAME";
+
+//Dose Confirm
+$dosecsql = "SELECT Name, Dose, Medication, Date, TOD FROM medsheet";
+
+
 //Type Searches
 
 $catsql= "TYPE =\"C\" and ISO =\"N\" " ;
@@ -66,11 +64,13 @@ $isosql= "TYPE =\"C\" and  ISO =\"Y\" "  ;
 
 //Counts
 
-$dogcount="select COUNT(DISTINCT(ID)) as CT from medsheet where type = 'D' and " . $today . " ";
+$counter="select COUNT(DISTINCT(ID)) as CT from medsheet where ";
 
-$catcount="select COUNT(DISTINCT(ID)) as CT from medsheet where type = 'C'  and ISO !='y'  and " . $today . "" ;
+$dogcount=$counter . $dogsql . " and " . $today;
 
-$isocount="select COUNT(DISTINCT(ID)) as CT from medsheet where type = 'C'  and ISO ='y' and " . $today . " ";
+$catcount=$counter . $catsql . "  and " . $today;
+
+$isocount=$counter . $isosql . " and " . $today;
 
 
 
