@@ -56,29 +56,13 @@ include 'admin/queries.php';
 
 date_default_timezone_set('America/New_York');
 
-
-/*
-if (empty($tod)) {
-$t = time(); # or any other timestamp
-if (date('H', $t) < 17) {
-$tod = "AM";
-} else {
-$tod = "PM";
-
-}
-
-}
-
-*/
-
-$dtest= date("m/d");
-//echo $dtest ;
+$shortdate= date("m/d");
 
 
 switch ($dname)
         {
         case "CAT":
-        $sql= $indsql . " where " .  $catsql;
+        $sql= $ovrsql .  $catsql;
 		$linker=" AND ";
 		$displayname = "Cats";
 		$btncolor = "warning";
@@ -86,7 +70,7 @@ switch ($dname)
         break;
 
         case "DOG":
-		$sql= $indsql . " where " . $dogsql;
+		$sql= $ovrsql . $dogsql;
 		$linker=" AND ";
 		$displayname = "Dogs";	
 		$btncolor = "danger";
@@ -94,7 +78,7 @@ switch ($dname)
         break;
 
         case "ISO":
-		$sql= $indsql . " where " . $isosql ;
+		$sql= $ovrsql . $isosql ;
 		$linker=" AND ";
 		$displayname = "ISO";
 		$btncolor = "info";
@@ -185,7 +169,6 @@ switch ($dname)
         
   */    
 $sql= $sql . $orderby;
-//echo $sql;
 
 ?>
 
@@ -205,7 +188,7 @@ $sql= $sql . $orderby;
 <div>
 	<h1>
 	
-    <? echo "<span class=\"label label-" . $btncolor . "\"><i class=\"fa fa-" . $ticon . "\"></i> " . $displayname . " " . $dtest  . "</span>" ?>
+    <? echo "<span class=\"label label-" . $btncolor . "\"><i class=\"fa fa-" . $ticon . "\"></i> " . $displayname . " " . $shortdate  . "</span>" ?>
      
     
     
@@ -239,21 +222,15 @@ $sql= $sql . $orderby;
   
 
 <table class="table">
-<!-- <tr class="danger"><th>Name</th><th>Med</th><th>Dose</th><th>ADM</th></tr> -->
 <?
 $result=mysqli_query($con,$sql);
 if ($result === false) { echo "An error occurred."; }
 
 while($rows=mysqli_fetch_array($result)){
 
-/*
-$fordate=$rows['Date'];
 
-$date=date_create("$fordate");
-$fordate=date_format($date,"M d");
-*/
 
-echo "<tr  ><td class=\"danger\" id=\"leftlabel\"rowspan=\"2\"><span ><b>"  . $rows['Name'] . "</b></span></td><td id=\"tblcontent\">" . $rows['Medication'] . 
+echo "<tr  ><td class=\"" . $btncolor . "\" id=\"leftlabel\"rowspan=\"2\"><span ><b>"  . $rows['Name'] . "</b></span></td><td id=\"tblcontent\">" . $rows['Medication'] . 
 "</td><td id=\"tblcontent\">" . $rows['Dose'] . "</td>" ;
 
 
