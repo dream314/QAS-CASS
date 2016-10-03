@@ -6,15 +6,17 @@ date_default_timezone_set('America/New_York');
 
 $orderby= " order by Name, Date, TOD ";
 
-$dtest= date("Y-m-d");
-$dtest01= date("d M y");
+//$dtest= date("Y-m-d");
+//$dtest01= date("d M y");
 
-
+/*
 $date=date_create("$dtest");
 date_add($date,date_interval_create_from_date_string("7 days"));
 $wtest = date_format($date,"Y-m-d");
 date_add($date,date_interval_create_from_date_string("30 days"));
 $mtest = date_format($date,"Y-m-d");
+
+*/
 
 //AM PM
 $amtime=" and TOD=\"AM\" ";
@@ -22,11 +24,11 @@ $amtime=" and TOD=\"AM\" ";
 $pmtime =" and TOD = \"PM\" ";
 
 
-$today= "Date ='$dtest01'" ;
+$today= "Date =(select date_format(current_date, '%d %b %y'))" ;
 
 $week="week(Date)= (select week(current_date) )";
 
-$month="Date BETWEEN \"" . $dtest . "\" AND \"" . $mtest . "\"";
+$month="Date BETWEEN (select date_format(current_date, '%d %b %y'))" AND "\"" . $mtest . "\"";
 
 
 
@@ -58,7 +60,7 @@ $dosecsql = "SELECT Name, Dose, Medication, Date, TOD FROM medsheet";
 
 $catsql= "TYPE =\"C\" and ISO =\"N\" " ;
 
-$dogsql= "TYPE =\"D\"  ";
+$dogsql= "TYPE =\"D\" and ISO =\"N\" ";
 
 $isosql= "TYPE =\"C\" and  ISO =\"Y\" "  ;
 
